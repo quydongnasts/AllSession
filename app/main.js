@@ -1,23 +1,17 @@
 /*global alert, confirm, console, Debug, opera, prompt, WSH */
 import React, { Component } from 'react';
-
 import {
-  StyleSheet,
+
 } from 'react-native';
 
-import WeatherScreen from './layouts/weather/index';
+import Root from './routes/root';
 
 class Main extends Component {
   render() {
     return (
-      <WeatherScreen />
+      <Root />
     );
   }
 }
-
-const styles = StyleSheet.create({
-
-});
-
 
 export default Main;
