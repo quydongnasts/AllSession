@@ -8,15 +8,12 @@ import {
   Text
 } from 'react-native';
 
-class HomeScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: null,
-  });
+class NotificationScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>
-          HomeScreen
+          NotificationScreen
         </Text>
       </View>
     );
@@ -32,5 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-
-export default HomeScreen;
+export default NotificationScreen;

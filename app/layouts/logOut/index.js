@@ -8,12 +8,12 @@ import {
   Text
 } from 'react-native';
 
-class NewsScreen extends Component {
+class LogOutScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>
-          NewsScreen
+          LogOutScreen
         </Text>
       </View>
     );
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default NewsScreen;
+export default LogOutScreen;

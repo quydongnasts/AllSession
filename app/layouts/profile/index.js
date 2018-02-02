@@ -9,14 +9,11 @@ import {
 } from 'react-native';
 
 class ProfileScreen extends Component {
-  static navigationOptions = () => ({
-    header: null,
-  });
   render() {
     return (
       <View style={styles.container}>
         <Text>
-          MessageScreen
+          ProfileScreen
         </Text>
       </View>
     );
@@ -31,6 +28,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff'
   }
 });
-
 
 export default ProfileScreen;

@@ -15,10 +15,6 @@ import {
 import { Icon } from 'react-native-elements';
 
 class WeatherScreen extends Component {
-  static navigationOptions = () => ({
-    header: null,
-  });
-
   constructor(props) {
     super(props);
     this.state = {

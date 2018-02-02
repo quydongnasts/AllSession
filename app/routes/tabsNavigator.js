@@ -3,40 +3,37 @@ import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import HomeScreen from './../layouts/home/index';
 import NewsScreen from './../layouts/news/index';
 import WeatherScreen from './../layouts/weather/index';
-import ProfileScreen from './../layouts/profile/index';
-
+// import Stacks from './stackNavigator';
 
 const tabBarOptions = {
-  showIcon: true,
+  showIcon: false,
+  upperCaseLabel: false,
   labelStyle: {
     fontSize: 11,
-    marginTop: 0
+    // marginTop: 0
   },
   tabStyle: {
     padding: 0
   },
   style: {
     backgroundColor: '#ffffff',
-    borderTopWidth: 0.5,
-    borderColor: 'gray'
   },
-  activeTintColor: '#D228A0',
+  activeTintColor: '#06a7e1',
   inactiveTintColor: 'gray',
   indicatorStyle: {
-    backgroundColor: '#ffffff'
+    backgroundColor: '#06a7e1'
   }
 };
 
 const Tabs = TabNavigator({
-  Home: {
-    screen: HomeScreen,
+  News: {
+    screen: NewsScreen,
     navigationOptions: {
-      tabBarLabel: 'Home',
+      tabBarLabel: 'News',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name='home' type='entypo' color={tintColor} size={20} />
+        <Icon name='twitter' type='entypo' color={tintColor} size={20} />
       ),
     },
   },
@@ -49,27 +46,10 @@ const Tabs = TabNavigator({
       ),
     },
   },
-  News: {
-    screen: NewsScreen,
-    navigationOptions: {
-      tabBarLabel: 'News',
-      tabBarIcon: ({ tintColor }) => (
-        <Icon name='twitter' type='entypo' color={tintColor} size={20} />
-      ),
-    },
-  },
-  Profile: {
-    screen: ProfileScreen,
-    navigationOptions: {
-      tabBarLabel: 'Profile',
-      tabBarIcon: ({ tintColor }) => (
-        <Icon name='user' type='entypo' color={tintColor} size={20} />
-      ),
-    },
-  },
 },
 {
-  tabBarPosition: 'bottom',
+  // tabBarPosition: 'bottom',
+  swipeEnabled: false,
   tabBarOptions
 });
 
