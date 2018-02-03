@@ -1,12 +1,40 @@
 import React from 'react';
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text
+} from 'react-native';
 
-import { DrawerNavigator } from 'react-navigation';
-import { Icon } from 'react-native-elements';
+import { DrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
+import { Icon, Avatar } from 'react-native-elements';
 
 import Stack from './stackNavigator';
 import ProfileScreen from './../layouts/profile/index';
 import NotificationScreen from './../layouts/notification/index';
 import LogOutScreen from './../layouts/logOut/index';
+
+const CustomDrawerContentComponent = (props) => (
+  <View style={styles.container}>
+    <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
+      <View style={styles.header}>
+        <Image
+          source={require('./../assets/img/bg_header.jpg')}
+          style={styles.bgImgStyles}
+        />
+        <Avatar
+          large
+          rounded
+          source={{ uri: 'https://www.sbs.com.au/popasia/sites/sbs.com.au.popasia/files/styles/body_image/public/4minute-hyuna-2.jpg?itok=miWX11m6&mtime=1497555432' }}
+          activeOpacity={0.7}
+        />
+        <Text style={{ paddingTop: 10, color: '#ffffff' }}>Kim Hyun-ah</Text>
+        <Text style={{ color: '#ffffff' }}>click.boom050@gmail.com</Text>
+      </View>
+      <DrawerItems {...props} />
+    </SafeAreaView>
+  </View>
+);
 
 const Root = DrawerNavigator({
   Home: {
@@ -58,7 +86,26 @@ const Root = DrawerNavigator({
     inactiveTintColor: '#ffffff',
     activeBackgroundColor: '#3c3c47',
     inactiveBackgroundColor: '#3c3c47'
-  }
+  },
+  contentComponent: CustomDrawerContentComponent
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    height: 150,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bgImgStyles: {
+    flex: 1,
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+  },
 });
 
 export default Root;
