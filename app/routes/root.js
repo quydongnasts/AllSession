@@ -13,6 +13,7 @@ import Stack from './stackNavigator';
 import ProfileScreen from './../layouts/profile/index';
 import NotificationScreen from './../layouts/notification/index';
 import LogOutScreen from './../layouts/logOut/index';
+import LogInScreen from './../layouts/logIn/index';
 
 const CustomDrawerContentComponent = (props) => (
   <View style={styles.container}>
@@ -72,9 +73,19 @@ const Root = DrawerNavigator({
         <Icon name='share-square-o' type='font-awesome' color={tintColor} size={22} />
       ),
     },
+  },
+  LogIn: {
+    screen: LogInScreen,
+    navigationOptions: {
+      drawerLabel: 'Log in',
+      drawerIcon: ({ tintColor }) => (
+        <Icon name='share-square-o' type='font-awesome' color={tintColor} size={22} />
+      ),
+    },
   }
 },
 {
+  initialRouteName: 'LogIn',
   drawerBackgroundColor: '#3c3c47',
   contentOptions: {
     labelStyle: {
