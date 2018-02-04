@@ -21,22 +21,28 @@ class NewsScreen extends Component {
   }
 
 componentWillMount() {
-  this.getMoviesFromApiAsync();
+  const d = new Date();
+  const todayDate = d.toISOString().slice(0, 10);
+  const yesterdayDate = [
+   d.getFullYear(),
+   (`0${(d.getMonth() + 1)}`).slice(-2),
+   (`0${(d.getDate() - 1)}`).slice(-2)
+ ].join('-');
+
+  this.getMoviesFromApiAsync(todayDate, yesterdayDate);
 }
 
- getMoviesFromApiAsync() {
-  return fetch('https://newsapi.org/v2/everything?q=apple&from=2018-02-02&to=2018-02-02&sortBy=popularity&apiKey=2a5c4f322f584224847b860ba6314385')
+ getMoviesFromApiAsync(todayDate, yesterdayDate) {
+  return fetch(`https://newsapi.org/v2/everything?q=apple&sortBy=popularity&apiKey=2a5c4f322f584224847b860ba6314385&from=${yesterdayDate}&to=${todayDate}`)
     .then((response) => response.json())
     .then((responseJson) => {
       // return responseJson.movies;
-      // console.log(responseJson.articles);
       this.setState({ data: responseJson.articles });
     })
     .catch((error) => {
       console.error(error);
     });
 }
-
 
 switchRenderImage = (name) => {
   switch (name) {
@@ -84,10 +90,10 @@ renderItem = ({ item }) => {
               {publishedAtNew}
             </Text>
             <Icon
-              name='clock'
+              name='globe'
               type='entypo'
               color='gray'
-              size={20}
+              size={15}
               iconStyle={{ paddingLeft: 5 }}
             />
           </View>
@@ -112,7 +118,7 @@ renderItem = ({ item }) => {
           </Text>
         </View>
         <View style={styles.ItemAuthor}>
-          <Text style={{ fontSize: 12 }}>{author.toUpperCase()}</Text>
+          <Text style={{ fontSize: 12 }}>{author}</Text>
         </View>
 
       </View>
@@ -163,6 +169,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderStyle: 'dotted',
     borderBottomWidth: 0.5,
+    borderColor: 'gray',
     paddingVertical: 7
   },
   ItemTitle: {
