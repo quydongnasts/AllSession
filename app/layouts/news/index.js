@@ -103,12 +103,19 @@ renderItem = ({ item }) => {
           <Text style={{ color: '#000000' }}>{title}</Text>
         </View>
         <View style={styles.ItemUrlToImage}>
-          <Image
-            style={{ width: '100%', height: 150 }}
-            source={{ uri: `${urlToImage}` }}
-            cache='force-cache'
-          />
-
+          { urlToImage != null ?
+            <Image
+              style={{ width: '100%', height: 150 }}
+              source={{ uri: `${urlToImage}` }}
+              cache='force-cache'
+            />
+            :
+            <Image
+              style={{ width: '100%', height: 150 }}
+              source={{ uri: './../../assets/img/urlToImage.jpg' }}
+              cache='force-cache'
+            />
+          }
         </View>
         <View style={styles.ItemDescription}>
           <Text
@@ -118,7 +125,9 @@ renderItem = ({ item }) => {
           </Text>
         </View>
         <View style={styles.ItemAuthor}>
-          <Text style={{ fontSize: 12 }}>{author}</Text>
+          <Text style={{ fontSize: 12 }}>
+            {(author != null) ? author : 'Anonymous'}
+          </Text>
         </View>
 
       </View>
@@ -148,7 +157,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
     flexDirection: 'row',
-    padding: 5,
+    paddingHorizontal: 5,
+    paddingVertical: 10,
     marginBottom: 5,
     borderBottomWidth: 0.5,
     borderColor: 'gray'
