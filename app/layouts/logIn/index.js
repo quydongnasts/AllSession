@@ -8,6 +8,7 @@ import {
   Image
 } from 'react-native';
 
+import { connect } from 'react-redux';
 import { Avatar, FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
 
 class LogInScreen extends Component {
@@ -34,6 +35,19 @@ class LogInScreen extends Component {
   onChangePassword = (value) => {
     this.setState({ password: { value } });
     console.log(this.state.password);
+  }
+
+  handleSignIn = () => {
+    const { email, password } = this.state;
+    if (email.value !== this.props.email) {
+      this.setState({ email: { error: true } });
+    }
+    if (password.value !== this.props.password) {
+      this.setState({ password: { error: true } });
+    }
+    if ((email.value === this.props.email) && (password.value === this.props.password)) {
+      this.props.navigation.navigate('Authorized');
+    }
   }
 
   render() {
@@ -98,7 +112,7 @@ class LogInScreen extends Component {
               title='Sign in'
               buttonStyle={{ marginBottom: 10 }}
               backgroundColor='#E91F64'
-              onPress={() => this.props.navigation.navigate('Authorized')}
+              onPress={this.handleSignIn}
             />
             <Button
               iconRight={{ name: 'lock', type: 'font-awesome' }}
@@ -166,4 +180,12 @@ const styles = StyleSheet.create({
    }
 });
 
-export default LogInScreen;
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    email: state.email,
+    password: state.password
+  };
+}
+
+export default connect(mapStateToProps)(LogInScreen);

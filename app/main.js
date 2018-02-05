@@ -4,12 +4,17 @@ import {
 
 } from 'react-native';
 
+import { Provider } from 'react-redux';
+
+import { store } from './redux/index';
 import Root from './routes/root';
 
 class Main extends Component {
   render() {
     return (
-      <Root />
+      <Provider store={store}>
+        <Root />
+      </Provider>
     );
   }
 }
