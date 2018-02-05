@@ -27,12 +27,12 @@ class LogInScreen extends Component {
   }
 
   onChangeEmail = (value) => {
-    this.setState({ email: value });
+    this.setState({ email: { value } });
     console.log(this.state.email);
   }
 
   onChangePassword = (value) => {
-    this.setState({ password: value });
+    this.setState({ password: { value } });
     console.log(this.state.password);
   }
 

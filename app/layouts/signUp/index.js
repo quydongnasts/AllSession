@@ -14,11 +14,9 @@ class SignUpScreen extends Component {
     super(props);
 
     this.state = {
-      email: {
-        value: '',
-        error: false
-      },
-      password: {
+      email: '',
+      password: '',
+      confirmPassword: {
         value: '',
         error: false
       }
@@ -27,16 +25,18 @@ class SignUpScreen extends Component {
 
   onChangeEmail = (value) => {
     this.setState({ email: value });
-    console.log(this.state.email);
   }
 
   onChangePassword = (value) => {
     this.setState({ password: value });
-    console.log(this.state.password);
+  }
+
+  onChangeConfirmPassword = (value) => {
+    this.setState({ confirmPassword: { value } });
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, confirmPassword } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.content}>
@@ -46,47 +46,42 @@ class SignUpScreen extends Component {
               placeholder='email@example.domain'
               underlineColorAndroid='#E91F64'
               selectionColor='#E91F64'
-              value={email.value}
+              value={email}
               onChangeText={(value) => this.onChangeEmail(value)}
             />
-            { email.error &&
-              <FormValidationMessage
-                containerStyle={styles.errorContainer}
-                labelStyle={styles.errorLabel}
-              >
-                Invalid Email
-              </FormValidationMessage>
-            }
             <FormLabel labelStyle={styles.labelStyle}>PASSWORD</FormLabel>
             <FormInput
               placeholder='••••••••'
               underlineColorAndroid='#E91F64'
               selectionColor='#E91F64'
               secureTextEntry
-              value={password.value}
+              value={password}
               onChangeText={(value) => this.onChangePassword(value)}
             />
-            { password.error &&
+            <FormLabel labelStyle={styles.labelStyle}>CONFIRM PASSWORD</FormLabel>
+            <FormInput
+              placeholder='••••••••'
+              underlineColorAndroid='#E91F64'
+              selectionColor='#E91F64'
+              secureTextEntry
+              value={confirmPassword.value}
+              onChangeText={(value) => this.onChangeConfirmPassword(value)}
+            />
+            { confirmPassword.error &&
               <FormValidationMessage
                 containerStyle={styles.errorContainer}
                 labelStyle={styles.errorLabel}
               >
-                Invalid Password
+                Retype password incorrect
               </FormValidationMessage>
             }
           </View>
           <View style={styles.button}>
             <Button
-              iconRight={{ name: 'sign-in', type: 'font-awesome' }}
-              title='Sign in'
+              title='Sign up'
               buttonStyle={{ marginBottom: 10 }}
               backgroundColor='#E91F64'
-              onPress={() => this.props.navigation.navigate('Authorized')}
-            />
-            <Button
-              iconRight={{ name: 'lock', type: 'font-awesome' }}
-              title='Sign up'
-              backgroundColor='#D3D3D3'
+              onPress={() => alert('ok')}
             />
           </View>
         </View>
@@ -103,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff'
   },
   content: {
-    flex: 2
+    flex: 1
   },
   form: {
     flex: 4,
