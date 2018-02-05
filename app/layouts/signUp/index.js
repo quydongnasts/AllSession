@@ -5,12 +5,11 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Image
 } from 'react-native';
 
-import { Avatar, FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
+import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
 
-class LogInScreen extends Component {
+class SignUpScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -38,25 +37,9 @@ class LogInScreen extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Image
-            style={{ height: '100%', width: '100%' }}
-            source={require('./../../assets/img/bg_header.jpg')}
-          />
-          <View style={styles.absolute}>
-            <Avatar
-              rounded
-              source={require('./../../assets/img/login.png')}
-              width={100}
-              height={100}
-            />
-          </View>
-        </View>
         <View style={styles.content}>
-
           <View style={styles.form}>
             <FormLabel labelStyle={styles.labelStyle}>EMAIL</FormLabel>
             <FormInput
@@ -104,7 +87,6 @@ class LogInScreen extends Component {
               iconRight={{ name: 'lock', type: 'font-awesome' }}
               title='Sign up'
               backgroundColor='#D3D3D3'
-              onPress={() => navigate('SignUp')}
             />
           </View>
         </View>
@@ -119,22 +101,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'stretch',
     backgroundColor: '#ffffff'
-  },
-  header: {
-    height: 200,
-    alignItems: 'center',
-  },
-  absolute: {
-    width: 105,
-    height: 105,
-    position: 'absolute',
-    zIndex: 1,
-    top: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 100,
-    borderWidth: 10,
-    borderColor: 'white'
   },
   content: {
     flex: 2
@@ -166,4 +132,4 @@ const styles = StyleSheet.create({
    }
 });
 
-export default LogInScreen;
+export default SignUpScreen;
